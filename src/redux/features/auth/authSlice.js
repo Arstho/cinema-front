@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '../../../utils/axios'
 
 const initialState = {
   user: null,
@@ -13,42 +12,51 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async ({ username, password }) => {
     try {
-      const { data } = await axios.post('/registration', {
-        username,
-        password,
-      })
+      const response = await fetch('http://localhost:4000/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await response.json();
       if (data.token) {
-        window.localStorage.setItem('token', data.token)
+        window.localStorage.setItem('token', data.token);
       }
-      return data
+      return data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
-)
+);
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ username, password }) => {
     try {
-      const { data } = await axios.post('/login', {
-        username,
-        password,
-      })
+      const response = await fetch('http://localhost:4000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await response.json();
       if (data.token) {
-        window.localStorage.setItem('token', data.token)
+        window.localStorage.setItem('token', data.token);
       }
-      return data
+      return data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
-)
+);
 
 export const getUsers = createAsyncThunk("get/users", async () => {
   try {
-    const response = await axios.get("/users");
-    return response.data;
+    const response = await fetch("http://localhost:4000/users");
+    const data = await response.json();
+    return data;
   } catch (error) {
     throw error;
   }
@@ -58,7 +66,7 @@ export const deleteUserByName = createAsyncThunk(
   "delete/user",
   async (username, thunkAPI) => {
     try {
-      await fetch(`/${username}`, {
+      await fetch(`http://localhost:4000/${username}`, {
         method: "DELETE",
       });
       return username;
@@ -81,7 +89,6 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: {
-    // Register user
     [registerUser.pending]: (state) => {
       state.isLoading = true
       state.status = null
@@ -96,7 +103,6 @@ export const authSlice = createSlice({
       state.status = action.payload.message
       state.isLoading = false
     },
-    // Login user
     [loginUser.pending]: (state) => {
       state.isLoading = true
       state.status = null
@@ -111,11 +117,9 @@ export const authSlice = createSlice({
       state.status = action.payload.message
       state.isLoading = false
     },
-    // get users
     [getUsers.fulfilled]: (state, action) => {
       state.users = action.payload;
     },
-    // Проверка авторизации
     [deleteUserByName.fulfilled]: (state, action) => {
       state.users = state.users.filter(
         (user) => user.username !== action.payload
