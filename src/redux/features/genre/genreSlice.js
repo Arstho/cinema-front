@@ -84,8 +84,8 @@ export const deleteGenre = createAsyncThunk(
   }
 );
 
-export const categoriesSlice = createSlice({
-  name: "categories",
+export const genreSlice = createSlice({
+  name: "genre",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -115,4 +115,4 @@ export const categoriesSlice = createSlice({
   },
 });
 
-export default categoriesSlice.reducer;
+export default genreSlice.reducer
