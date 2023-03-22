@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './Movie.css';
+import './onePage.module.css';
 
-function MoviePage(props) {
+export const OnePage(props) {
 
 
  
@@ -27,5 +27,3 @@ function MoviePage(props) {
     </div>
   );
 }
-
-export default MoviePage;

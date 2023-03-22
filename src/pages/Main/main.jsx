@@ -1,5 +1,5 @@
 import MovieCard from "../components/MovieCard";
-import './Main.css'
+import styles from 'main.module.css'
 
 const movie = [
     {
@@ -55,14 +55,12 @@ const movie = [
       }
 ]
 
-function Main() {
+export const Main = () => {
     return (
-      <div className="main">
+      <div className={styles.main}>
         {movie.map((movie) => (
           <MovieCard key={movie.id} title={movie.title} releaseDate={movie.releaseDate} description={movie.description} poster={movie.posterUrl}/>
         ))}
       </div>
     );
   }
-  
-  export default Main;
