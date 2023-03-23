@@ -25,7 +25,6 @@ export const HomePage = () => {
                 <Link className={styles.cat_title} to={`/category/${cat._id}`}>
                   <h2>{cat.name}</h2>
                 </Link>
-
                 <Slider catId={cat._id} />
               </div>
             );
