@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MovieCard from "../../components/MovieCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
-import styles from './HomePage.module.scss'
+import styles from "./HomePage.module.scss";
 import Slider from "../../components/Slider/Slider";
+import { fetchCategories } from "../../redux/features/category/categorySlice";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
-const dispatch = useDispatch()
-const movies = useSelector(state => state.movie.movies)
+  const dispatch = useDispatch();
 
-React.useEffect(() => {
-  dispatch(fetchMovies());
-}, [dispatch]);
-
+  React.useEffect(() => {
+    dispatch(fetchMovies());
+    dispatch(fetchCategories());
+  }, [dispatch]);
+  const categories = useSelector((state) => state.category.categories);
 
   return (
     <div className={styles.home_page}>
       <div className={styles.content_wrapper}>
-        <Slider />
-        <iframe src="https://vk.com/video_ext.php?oid=-56028029&id=456245749&hash=880cce0cb50f8c08&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+        <div className={styles.category}>
+          {categories.map((cat) => {
+            return (
+              <div>
+                <Link to={`/category/${cat._id}`}>
+                  <h2 className={styles.cat_title}>{cat.name}</h2>
+                </Link>
+                <Slider catId={cat._id} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

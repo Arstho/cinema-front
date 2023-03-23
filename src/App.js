@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 import { HomePage } from "./pages/HomePage/HomePage";
 import { OnePage } from "./pages/OnePage/OnePage";
@@ -11,16 +11,15 @@ import ListPage from "./pages/ListPage/ListPage";
 function App() {
   return (
     <div className='App'>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/category:id' element={<HomePage />} />
-        <Route path='/list' element={<ListPage />} />
+        <Route path='/category/:id' element={<ListPage />} />
         <Route path='/page' element={<OnePage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
