@@ -26,8 +26,6 @@ export const OnePage = () => {
         <h1>Фильм Спутник (2020) смотреть онлайн</h1>
       </div>
 
-      {/* <iframe width="560" height="315" src="//ok.ru/videoembed/700303477462" frameborder="0" allow="autoplay" allowfullscreen></iframe> */}
-
       <div className={styles.posterAndInfo}>
         <div className={styles.poster}>
           <img alt="Фильм Спутник " title="Фильм Спутник фото" src="https://mf-static-ssl.more.tv/jackal/2598897/e8a7497e-fda9-4307-a512-335405694628_W250_H355.webp" />
