@@ -9,20 +9,22 @@ import { Footer } from "./components/Footer";
 import ListPage from "./pages/ListPage/ListPage";
 // import IconBxUser from "./IconBxUser";
 import PersonalArea from "./components/PersonalArea/PersonalArea";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 function App() {
   return (
     <div className='App'>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/personal' element={<PersonalArea />} />
         <Route path='/category/:id' element={<ListPage />} />
-        <Route path='/page' element={<OnePage />} />
+        <Route path='/movie/:id' element={<OnePage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/admin' element={<AdminPage />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

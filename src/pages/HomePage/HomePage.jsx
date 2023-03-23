@@ -22,9 +22,10 @@ export const HomePage = () => {
           {categories.map((cat) => {
             return (
               <div>
-                <Link to={`/category/${cat._id}`}>
-                  <h2 className={styles.cat_title}>{cat.name}</h2>
+                <Link className={styles.cat_title} to={`/category/${cat._id}`}>
+                  <h2>{cat.name}</h2>
                 </Link>
+
                 <Slider catId={cat._id} />
               </div>
             );
