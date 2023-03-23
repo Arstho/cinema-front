@@ -1,0 +1,66 @@
+.container {
+  color: white;
+  width: 85%;
+  height: auto;
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 3%;
+  position: relative;
+  background: #1a1919;
+  .posterAndInfo {
+    display: flex;
+    margin: 5em;
+  }
+  .poster {
+    margin-right: 5em;
+    display: flex;
+    flex-direction: column;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    line-height: 3em;
+  }
+  .info div {
+    list-style-type: none;
+    text-decoration: none;
+    font-size: larger;
+    color: grey;
+  }
+  .info a {
+    list-style-type: none;
+    text-decoration: none;
+    font-size: larger;
+    color: rgb(217, 197, 197);
+  }
+  .grade {
+    display: flex;
+    align-items: center;
+  }
+  .grade svg {
+    margin: 0 5px;
+  }
+  .discription {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: rgb(217, 197, 197);
+    //     overflow: hidden;
+    // text-overflow: ellipsis;
+  }
+  .readBtn {
+    color: rgb(217, 197, 197);
+    cursor: pointer;
+  }
+  h3 {
+    color: rgb(217, 197, 197);
+  }
+}
+.video {
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+}
