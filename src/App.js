@@ -4,8 +4,8 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { OnePage } from "./pages/OnePage/OnePage";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import ListPage from "./pages/ListPage/ListPage";
 
 function App() {

@@ -2,7 +2,7 @@ import React from 'react';
 import './Styles.css'
 import  { useNavigate } from 'react-router-dom';
 
-function Header() {
+export const Header = () => {
     const navigate = useNavigate()
 
     const handleMain = () => {
@@ -36,6 +36,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;
-

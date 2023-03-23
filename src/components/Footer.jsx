@@ -1,8 +1,8 @@
 import React from 'react';
-import './Footer.css'
+import styles from './footer.module.css'
 import { useNavigate } from 'react-router-dom';
 
-const Footer = () => {
+export const Footer = () => {
   const navigate = useNavigate();
 
   const handleMain = () => {
@@ -19,7 +19,7 @@ const Footer = () => {
           <li><a href="/faq">FAQ</a></li>
         </ul>
       </div>
-      <h1 className='footerLogo' onClick={handleMain}>KINO</h1>
+      <h1 className={styles.footerLogo} onClick={handleMain}>KINO</h1>
       <div>
         <h4>Наши социальные страницы</h4>
         <ul>
@@ -31,5 +31,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

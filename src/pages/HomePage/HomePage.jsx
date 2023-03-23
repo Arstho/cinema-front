@@ -1,6 +1,9 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
+import React from "react";
+import MovieCard from "../../components/MovieCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies } from "../../redux/features/movie/movieSlice";
+import styles from './homePage.module.css'
 import Slider from "../../components/Slider/Slider";
-import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
   return (
