@@ -2,10 +2,18 @@ import React from "react";
 import MovieCard from "../../components/MovieCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
-import styles from './homePage.module.css'
+import styles from './HomePage.module.scss'
 import Slider from "../../components/Slider/Slider";
 
 export const HomePage = () => {
+const dispatch = useDispatch()
+const movies = useSelector(state => state.movie.movies)
+
+React.useEffect(() => {
+  dispatch(fetchMovies());
+}, [dispatch]);
+
+
   return (
     <div className={styles.home_page}>
       <div className={styles.content_wrapper}>
