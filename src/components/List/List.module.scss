@@ -1,0 +1,44 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 5px;
+  margin: 20px 0;
+  position: relative;
+  .cardblock {
+    position: relative;
+    margin: 8px;
+    .card_img {
+      margin-bottom: 10px;
+      width: 130px;
+      border-radius: 5px;
+      transition: 300ms;
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+    .card_title {
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .card_sub {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.375);
+    }
+    .card_rating {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 4px 12px;
+      background: rgb(135, 135, 135);
+      border-radius: 8px;
+      color: white;
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 0;
+}
