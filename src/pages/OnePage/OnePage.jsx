@@ -67,5 +67,6 @@ export const OnePage = () => {
           <p onClick={hendleFullText} className={styles.readBtn}>Читать</p>}
       </div>
     </div>
-  );
+  )
 }
+

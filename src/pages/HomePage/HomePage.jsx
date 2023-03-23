@@ -3,20 +3,15 @@ import MovieCard from "../../components/MovieCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
 import styles from './homePage.module.css'
+import Slider from "../../components/Slider/Slider";
 
 export const HomePage = () => {
-  const movies = useSelector((state) => state.movie.movies)
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch(fetchMovies())
-  }, [dispatch]);
-
-    return (
-      <div className={styles.main}>
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} title={movie.title} releaseDate={movie.releaseDate} description={movie.description} poster={movie.posterUrl}/>
-        ))}
+  return (
+    <div className={styles.home_page}>
+      <div className={styles.content_wrapper}>
+        <Slider />
+        <iframe src="https://vk.com/video_ext.php?oid=-56028029&id=456245749&hash=880cce0cb50f8c08&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
       </div>
-    );
-  }
+    </div>
+  );
+};
