@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import MovieCard from "../../components/MovieCard";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
 import styles from "./HomePage.module.scss";
@@ -23,9 +22,10 @@ export const HomePage = () => {
           {categories.map((cat) => {
             return (
               <div>
-                <Link to={`/category/${cat._id}`}>
-                  <h2 className={styles.cat_title}>{cat.name}</h2>
+                <Link className={styles.cat_title} to={`/category/${cat._id}`}>
+                  <h2>{cat.name}</h2>
                 </Link>
+
                 <Slider catId={cat._id} />
               </div>
             );

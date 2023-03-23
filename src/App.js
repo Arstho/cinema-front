@@ -7,19 +7,21 @@ import { Login } from "./pages/Login/Login";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import ListPage from "./pages/ListPage/ListPage";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 function App() {
   return (
     <div className='App'>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/category/:id' element={<ListPage />} />
         <Route path='/page' element={<OnePage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/admin' element={<AdminPage />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
