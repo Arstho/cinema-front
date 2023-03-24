@@ -41,6 +41,7 @@ function Header() {
         />
       </div>
       <div className="login-container">
+        <button>modal</button>
         <button className="login-button" onClick={handleLogin}>
           Log In
         </button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import styles from "./Modal.module.css";
 
@@ -15,22 +15,23 @@ function SearchModal({ open, setOpen }) {
     movie.name.toLowerCase().includes(text.toLowerCase())
   );
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      inputRef.current.focus();
+    }
+  }, [open]);
+
   return (
-    <div
-      className={
-        open ? styles.searchMain + " " + styles.active : styles.searchMain
-      }
-    >
+    <div className={open ? styles.searchMain + " " + styles.active : styles.searchMain}>
       <div className={styles.searchMod}>
         <button className={styles.closeButton} onClick={() => setOpen(false)}>
+          <b>
           ✕
+          </b>
         </button>
-        <input
-          type="text"
-          className={styles.inp}
-          value={text}
-          onChange={handleInputChange}
-        />
+        <input type="text" className={styles.inp} value={text} onChange={handleInputChange} ref={inputRef} />
       </div>
       <p className={styles.resultTitle}>Результаты поиска</p>
       <div className={styles.movieCardsContainer}>
