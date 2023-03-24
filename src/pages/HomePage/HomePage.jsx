@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import MovieCard from "../../components/MovieCard";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
 import styles from "./HomePage.module.scss";
@@ -18,6 +17,20 @@ export const HomePage = () => {
   }, [dispatch]);
   const categories = useSelector((state) => state.category.categories);
 
+  // const movie = 'Бронсон'
+
+  // async function getMovies() {
+  //   const res = await fetch(`https://api.kinopoisk.dev/v1/movie?page=1&limit=10&name=${movie}`, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "X-API-KEY": "298HSAZ-RFC47PT-GZ1P13Z-PCF5JXG"
+  //     }
+  //   })
+  //   const data = await res.json()
+  //   console.log(data);
+  // }
+  // getMovies()
+
   return (
     <>
     <Header/>
@@ -27,9 +40,10 @@ export const HomePage = () => {
           {categories.map((cat) => {
             return (
               <div>
-                <Link to={`/category/${cat._id}`}>
-                  <h2 className={styles.cat_title}>{cat.name}</h2>
+                <Link className={styles.cat_title} to={`/category/${cat._id}`}>
+                  <h2>{cat.name}</h2>
                 </Link>
+
                 <Slider catId={cat._id} />
               </div>
             );

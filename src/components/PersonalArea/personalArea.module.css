@@ -1,0 +1,96 @@
+.continer {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #141414;
+  width: 100%;
+  height: 400px;
+}
+.blokSiz {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 180px;
+  background-color: #141414;
+  margin-top: 30px;
+}
+.imgBlok {
+  display: flex;
+  justify-content: center;
+
+  align-items: flex-end;
+  width: 400px;
+  height: 90px;
+  background-color: #141414;
+}
+.img {
+  width: 60px;
+  height: 60px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 100px;
+  background-color: #141414;
+  color: white;
+}
+.blokMeny {
+  display: flex;
+  justify-content: center;
+
+  background-color: black;
+  width: 100%;
+  height: 100px;
+}
+.meny {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-around;
+  padding: 0px;
+}
+.blokUl {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: 100px;
+  background-color: black;
+}
+.li1 {
+  text-decoration: none;
+  list-style-type: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+  color: white;
+}
+.li1:hover {
+  text-decoration: none;
+  list-style-type: none;
+  border-bottom: 4px solid #0883e1;
+  cursor: pointer;
+}
+
+.futer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  background-color: #141414;
+  padding: 0px;
+}
+.info {
+  width: 350px;
+  text-align: center;
+}
+h2 {
+  color: white;
+}
+p {
+  color: white;
+}
