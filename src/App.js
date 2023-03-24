@@ -5,7 +5,7 @@ import { OnePage } from "./pages/OnePage/OnePage";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+// import { Footer } from "./components/Footer";
 import ListPage from "./pages/ListPage/ListPage";
 // import IconBxUser from "./IconBxUser";
 import PersonalArea from "./components/PersonalArea/PersonalArea";
@@ -24,7 +24,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<AdminPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
