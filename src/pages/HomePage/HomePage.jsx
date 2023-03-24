@@ -33,7 +33,6 @@ export const HomePage = () => {
 
   return (
     <>
-    <Header/>
     <div className={styles.home_page}>
       <div className={styles.content_wrapper}>
         <div className={styles.category}>

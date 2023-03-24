@@ -1,41 +1,59 @@
-import React from 'react';
-import { useSelector } from "react-redux";
-import { useNavigate, Link} from 'react-router-dom';
-import './Styles.css'
+import React, { useRef, useState } from "react";
+import "./Styles.css";
+import { useNavigate } from "react-router-dom";
+import SearchModal from "./SearchModal/SearchModal";
+function Header() {
+  const [open, setOpen] = useState(false);
+  const searchRef = React.useRef();
 
-export const Header = () => {
-    const navigate = useNavigate()
-    const categories = useSelector((state) => state.category.categories);
+  const navigate = useNavigate();
 
-    const handleMain = () => {
-        navigate('/');
-    }
+  const handleMain = () => {
+    navigate("/");
+  };
 
-    const handleLogin = () => {
-        navigate('/login');
-      };
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
-  return (
-    <div className="header">
-         <div className="logo-container">
-        {/* <img src="/path/to/logo.png" alt="Logo" className="logo" /> */}
-        <div className='logo' onClick={handleMain}>KINO</div>
+  const menu = (
+    <div className="header" ref={searchRef}>
+      {" "}
+      <div className="logo-container">
+        <div className="logo" onClick={handleMain}>
+          KINO
+        </div>
       </div>
       <div className="category-container">
         <ul className="category-list">
-        {categories.map(category => {
-          return  <Link  to={`/movie/${category._id}`}>
-          <li className="category-item">{category.name}</li>
-          </Link>
-        })}
+          <li className="category-item">Фильмы</li>
+          <li className="category-item">TV</li>
+          <li className="category-item">Мультфильмы</li>
+          <li className="category-item">Сериалы</li>
         </ul>
       </div>
       <div className="search-container">
-        <input type="text" placeholder="Search" className="search-box" />
+        <input
+          type="text"
+          placeholder="Search"
+          className="search-box"
+          onClick={() => setOpen(true)}
+        />
       </div>
       <div className="login-container">
-        <button className="login-button" onClick={handleLogin}>Log In</button>
+        <button className="login-button" onClick={handleLogin}>
+          Log In
+        </button>
       </div>
     </div>
   );
+
+  return (
+    <>
+      {!open ? menu : null}
+      <SearchModal open={open} setOpen={setOpen} />
+    </>
+  );
 }
+
+export default Header;

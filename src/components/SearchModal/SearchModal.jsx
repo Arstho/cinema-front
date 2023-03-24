@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./Modal.module.css";
 
-function SearchModal({open, setOpen}) {
+function SearchModal({ open, setOpen }) {
   const [text, setText] = useState("");
   const movies = useSelector((state) => state.movie.movies);
   console.log(movies);
-  
 
   const handleInputChange = (e) => {
     setText(e.target.value);
@@ -14,13 +13,18 @@ function SearchModal({open, setOpen}) {
 
   const filteredMovies = movies.filter((movie) =>
     movie.name.toLowerCase().includes(text.toLowerCase())
-  
   );
 
   return (
-    <div className={open ? styles.searchMain + ' ' + styles.active : styles.searchMain}>
+    <div
+      className={
+        open ? styles.searchMain + " " + styles.active : styles.searchMain
+      }
+    >
       <div className={styles.searchMod}>
-        <button className={styles.closeButton} onClick={() => setOpen(false)}>✕</button>
+        <button className={styles.closeButton} onClick={() => setOpen(false)}>
+          ✕
+        </button>
         <input
           type="text"
           className={styles.inp}
