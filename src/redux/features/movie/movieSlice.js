@@ -95,7 +95,6 @@ export const moviesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      //
       .addCase(fetchMovies.pending, (state) => {
         state.status = "loading";
       })
@@ -107,7 +106,6 @@ export const moviesSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      //
       .addCase(addMovie.pending, (state) => {
         state.status = "loading";
       })
@@ -119,7 +117,6 @@ export const moviesSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      //
       .addCase(deleteMovie.pending, (state) => {
         state.status = "loading";
       })
@@ -131,7 +128,6 @@ export const moviesSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      //
       .addCase(updateMovie.pending, (state) => {
         state.status = "loading";
       })

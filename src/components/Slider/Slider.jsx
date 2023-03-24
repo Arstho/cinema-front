@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
+import { Link } from "react-router-dom";
 import styles from "./Slider.module.scss";
 
 const Slider = ({ catId }) => {
