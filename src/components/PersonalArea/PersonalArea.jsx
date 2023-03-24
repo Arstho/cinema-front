@@ -22,22 +22,22 @@ const PersonalArea = () => {
           <div className={styles.blokUl}>
             <ul className={styles.meny}>
               <li className={styles.li1}>
-                <a href=""></a>ИЗБРАННОЕ
+                <a href="#"></a>ИЗБРАННОЕ
               </li>
               <li className={styles.li1}>
-                <a href=""></a>ОЦЕНКИ
+                <a href="#"></a>ОЦЕНКИ
               </li>
               <li className={styles.li1}>
-                <a href=""></a>ПОДПИСКА
+                <a href="#"></a>ПОДПИСКА
               </li>
               <li className={styles.li1}>
-                <a href=""></a>НАСТРОЙКИ
+                <a href="#"></a>НАСТРОЙКИ
               </li>
               <li className={styles.li1}>
-                <a href=""></a>ПРОМОКОДЫ
+                <a href="#"></a>ПРОМОКОДЫ
               </li>
               <li className={styles.li1}>
-                <a href=""></a>SMART TV
+                <a href="#"></a>SMART TV
               </li>
             </ul>
           </div>

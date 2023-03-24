@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from "react-redux";
-import  { useNavigate, Link} from 'react-router-dom';
+import { useNavigate, Link} from 'react-router-dom';
 import './Styles.css'
 
 export const Header = () => {
