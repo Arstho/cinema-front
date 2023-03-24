@@ -4,8 +4,7 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { OnePage } from "./pages/OnePage/OnePage";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import Header from "./components/Header/Header";
 import ListPage from "./pages/ListPage/ListPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 
@@ -21,7 +20,6 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<AdminPage />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
