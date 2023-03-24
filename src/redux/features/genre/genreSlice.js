@@ -4,85 +4,64 @@ const initialState = {
   genre: [],
 };
 
-export const fetchGenres = createAsyncThunk(
-  "fetch/genres",
-  async (_, thunkApi) => {
-    try {
-      const res = await fetch("http://localhost:4000/genre");
-      return res.json();
-    } catch (err) {
-      return thunkApi.rejectWithValue(err);
-    }
+export const fetchGenres = createAsyncThunk("fetch/genres", async (_, thunkApi) => {
+  try {
+    const res = await fetch("http://localhost:4000/genre");
+    return res.json();
+  } catch (err) {
+    return thunkApi.rejectWithValue(err);
   }
-);
+});
 
-export const fetchGenreById = createAsyncThunk(
-  "fetch/genreById",
-  async (id, thunkApi) => {
-    try {
-      const res = await fetch(`http://localhost:4000/genre/${id}`);
-      return res.json();
-    } catch (err) {
-      return thunkApi.rejectWithValue(err);
-    }
+export const fetchGenreById = createAsyncThunk("fetch/genreById", async (id, thunkApi) => {
+  try {
+    const res = await fetch(`http://localhost:4000/genre/${id}`);
+    return res.json();
+  } catch (err) {
+    return thunkApi.rejectWithValue(err);
   }
-);
+});
 
-export const addGenre = createAsyncThunk(
-  "add/genre",
-  async (name, thunkApi) => {
-    try {
-      const addedGenre = await fetch("http://localhost:4000/genre", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-        }),
-      });
-      return addedGenre.json();
-    } catch (err) {
-      return thunkApi.rejectWithValue(err);
-    }
+export const addGenre = createAsyncThunk("add/genre", async (name, thunkApi) => {
+  try {
+    const addedGenre = await fetch("http://localhost:4000/genre", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+      }),
+    });
+    return addedGenre.json();
+  } catch (err) {
+    return thunkApi.rejectWithValue(err);
   }
-);
+});
 
-export const patchGenre = createAsyncThunk(
-  "patch/genre",
-  async ({ id, name }, thunkApi) => {
-    try {
-      const patchedGenre = await fetch(
-        `http://localhost:4000/genre/${id}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-          }),
-        }
-      );
-      return patchedGenre.json();
-    } catch (err) {
-      return thunkApi.rejectWithValue(err);
-    }
+export const patchGenre = createAsyncThunk("patch/genre", async ({ id, name }, thunkApi) => {
+  try {
+    const patchedGenre = await fetch(`http://localhost:4000/genre/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+      }),
+    });
+    return patchedGenre.json();
+  } catch (err) {
+    return thunkApi.rejectWithValue(err);
   }
-);
+});
 
-export const deleteGenre = createAsyncThunk(
-  "delete/genre",
-  async (id, thunkApi) => {
-    try {
-      const deletedGenre = await fetch(
-        `http://localhost:4000/genre/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
-      return deletedGenre.json();
-    } catch (err) {
-      return thunkApi.rejectWithValue(err);
-    }
+export const deleteGenre = createAsyncThunk("delete/genre", async (id, thunkApi) => {
+  try {
+    const deletedGenre = await fetch(`http://localhost:4000/genre/${id}`, {
+      method: "DELETE",
+    });
+    return deletedGenre.json();
+  } catch (err) {
+    return thunkApi.rejectWithValue(err);
   }
-);
+});
 
 export const genreSlice = createSlice({
   name: "genre",
@@ -108,11 +87,9 @@ export const genreSlice = createSlice({
         });
       })
       .addCase(deleteGenre.fulfilled, (state, action) => {
-        state.genre = state.categories.filter(
-          (item) => item._id !== action.payload._id
-        );
+        state.genre = state.categories.filter((item) => item._id !== action.payload._id);
       });
   },
 });
 
-export default genreSlice.reducer
+export default genreSlice.reducer;
