@@ -54,10 +54,13 @@
         border-radius: 4px;
         color: rgba(255, 255, 255, 0.826);
         border-radius: 5px;
+        background: rgba(255, 255, 255, 0.128);
         transition: 200ms;
-        &:hover {
-          background: rgba(255, 255, 255, 0.128);
-        }
+        margin-left: 2em;
+
+      }
+      .filter_genre {
+        color: rgba(39, 37, 37, 0.826);
       }
     }
   }

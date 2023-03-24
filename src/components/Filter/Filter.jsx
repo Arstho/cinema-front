@@ -1,7 +1,27 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styles from "./Filter.module.scss";
 
 const Filter = () => {
+  const [genre, setGenre] = React.useState('');
+  const [year, setYear] = React.useState('');
+  const [country, setCountry] = React.useState('');
+  const [raiting, setRaiting] = React.useState('');
+  const movies = useSelector((state) => state.movie.movies);
+
+  const chengeGenre = (e) => {
+    setGenre(e.target.value);
+  }
+  const chengeYear = (e) => {
+    setYear(e.target.value);
+  }
+  const chengeCountry = (e) => {
+    setCountry(e.target.value);
+  }
+  const chengeRaiting = (e) => {
+    setRaiting(e.target.value);
+  }
+
   return (
     <>
       <div className={styles.header_wrapper}>
@@ -15,10 +35,47 @@ const Filter = () => {
             <div className={styles.sub_cat}>По подписке</div>
           </div>
           <div className={styles.filter_cont_1}>
-            <div className={styles.filter_cat}>Все жанры</div>
-            <div className={styles.filter_cat}>Все годы</div>
-            <div className={styles.filter_cat}>Все страны</div>
-            <div className={styles.filter_cat}>Любой рейтинг</div>
+            <select className={styles.filter_cat} value={genre} onChange={chengeGenre}>
+              <option className={styles.filter_genre}>Все жанры</option>
+              <option className={styles.filter_genre}>Боевик</option>
+              <option className={styles.filter_genre}>Триллер</option>
+              <option className={styles.filter_genre}>Драма</option>
+              <option className={styles.filter_genre}>Комедия</option>
+              <option className={styles.filter_genre}>Ужасы</option>
+              <option className={styles.filter_genre}>Мелодрама</option>
+              <option className={styles.filter_genre}>Исторический</option>
+              <option className={styles.filter_genre}>Детектив</option>
+              <option className={styles.filter_genre}>Приключения</option>
+            </select>
+            <select className={styles.filter_cat} value={year} onChange={chengeYear}>
+              <option className={styles.filter_genre}>Все годы</option>
+              <option className={styles.filter_genre}>до 1999</option>
+              <option className={styles.filter_genre}>2000 - 2005</option>
+              <option className={styles.filter_genre}>2006 - 2010</option>
+              <option className={styles.filter_genre}>2010 - 2015</option>
+              <option className={styles.filter_genre}>2016 - 2020</option>
+              <option className={styles.filter_genre}>2021 - 2023</option>
+            </select>
+            <select className={styles.filter_cat} value={country} onChange={chengeCountry}>
+              <option className={styles.filter_genre}>Все страны</option>
+              <option className={styles.filter_genre}>Австралия</option>
+              <option className={styles.filter_genre}>Австрия</option>
+              <option className={styles.filter_genre}>Бельгия</option>
+              <option className={styles.filter_genre}>Великобритания</option>
+              <option className={styles.filter_genre}>Германия</option>
+              <option className={styles.filter_genre}>США</option>
+              <option className={styles.filter_genre}>Бразилия</option>
+              <option className={styles.filter_genre}>Индия</option>
+              <option className={styles.filter_genre}>Дания</option>
+            </select>
+            <select className={styles.filter_cat} value={raiting} onChange={chengeRaiting}>
+              <option className={styles.filter_genre}>Любой рейтинг</option>
+              <option className={styles.filter_genre}>Больше 5</option>
+              <option className={styles.filter_genre}>Больше 6</option>
+              <option className={styles.filter_genre}>Больше 7</option>
+              <option className={styles.filter_genre}>Больше 8</option>
+              <option className={styles.filter_genre}>Больше 9</option>
+            </select>
           </div>
         </div>
       </div>

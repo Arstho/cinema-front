@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchGenres } from '../../redux/features/genre/genreSlice';
 import { fetchMovies } from '../../redux/features/movie/movieSlice';
+import { fetchCategories } from "../../redux/features/category/categorySlice";
 import styles from './onePage.module.scss';
 
 export const OnePage = () => {
@@ -19,6 +20,7 @@ export const OnePage = () => {
   React.useEffect(() => {
     dispatch(fetchMovies());
     dispatch(fetchGenres());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   let movieGenre = ''
@@ -32,11 +34,11 @@ export const OnePage = () => {
   const [fullText, setFullText] = React.useState(movie.description.slice(0, 500))
 
   const hendleFullText = () => {
-    if (movie.description && switchText) {
+    if (switchText) {
       setFullText(movie.description)
       setSwitchText(false)
     }
-    if (movie.description && !switchText) {
+    if (!switchText) {
       setFullText(movie.description.slice(0, 500))
       setSwitchText(true)
     }
