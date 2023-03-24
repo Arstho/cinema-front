@@ -1,0 +1,101 @@
+.searchMain {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  padding-top: 20px;
+  transform: scale(0);
+  backdrop-filter: 10px;
+  margin-top: 0px;
+  z-index: 9;
+  color: white;
+}
+
+
+.searchMain.active {
+  transform: scale(1);
+}
+
+.searchMod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 1000px;
+  overflow: hidden;
+}
+
+.inp {
+  height: 20px;
+  padding: 10px;
+  width: 800px;
+  border: 1px solid #ccc;
+  border-radius: 0px 20px 20px 0px;
+  font-size: 16px;
+  border: 0px solid black;
+  border-left: none;
+  background-color: #ccc;
+}
+
+.movieCardsContainer {
+  height: 400px;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 90%;
+  scroll-snap-type: x mandatory;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: rgba(255, 255, 255, 0);
+}
+
+.movieCard {
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  height: 200px;
+  display: inline-block;
+  flex: 0 0 auto;
+  margin-right: 20px;
+  scroll-snap-align: end;
+  transition: 300ms;
+}
+
+.movieCard:hover {
+  transform: scale(1.03)
+}
+
+
+img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.closeButton {
+  height: 40.2px;
+  border-radius: 20px 0px 0px 20px;
+  border: 0px solid black;
+  border-right: none;
+  background-color: #ccc;
+  width: 50px;
+  cursor: pointer;
+  font-size: 29px;
+}
+
+.movieCardInfo {
+  cursor: pointer;
+  text-align: center;
+}

@@ -6,6 +6,8 @@ import styles from "./HomePage.module.scss";
 import Slider from "../../components/Slider/Slider";
 import { fetchCategories } from "../../redux/features/category/categorySlice";
 import { Link } from "react-router-dom";
+import Header from "../../components/Header";
+
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -17,6 +19,8 @@ export const HomePage = () => {
   const categories = useSelector((state) => state.category.categories);
 
   return (
+    <>
+    <Header/>
     <div className={styles.home_page}>
       <div className={styles.content_wrapper}>
         <div className={styles.category}>
@@ -33,5 +37,6 @@ export const HomePage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
