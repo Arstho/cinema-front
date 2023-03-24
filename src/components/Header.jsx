@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSelector } from "react-redux";
+import { useNavigate, Link} from 'react-router-dom';
 import './Styles.css'
-import  { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
     const navigate = useNavigate()
+    const categories = useSelector((state) => state.category.categories);
 
     const handleMain = () => {
         navigate('/');
@@ -21,10 +23,11 @@ export const Header = () => {
       </div>
       <div className="category-container">
         <ul className="category-list">
-          <li className="category-item">Фильмы</li>
-          <li className="category-item">TV</li>
-          <li className="category-item">Мультфильмы</li>
-          <li className="category-item">Сериалы</li>
+        {categories.map(category => {
+          return  <Link  to={`/movie/${category._id}`}>
+          <li className="category-item">{category.name}</li>
+          </Link>
+        })}
         </ul>
       </div>
       <div className="search-container">
