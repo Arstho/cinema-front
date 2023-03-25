@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchGenres } from '../../redux/features/genre/genreSlice';
 import { fetchMovies } from '../../redux/features/movie/movieSlice';
-import { fetchCategories } from "../../redux/features/category/categorySlice";
+// import { fetchCategories } from "../../redux/features/category/categorySlice";
 import styles from './onePage.module.scss';
 
 export const OnePage = () => {
   const [switchText, setSwitchText] = React.useState(false)
   const { id } = useParams();
   const dispatch = useDispatch()
+  let movieGenre = ''
   const genres = useSelector((state) => state.genre.genre)
   const movie = useSelector((state) =>
     state.movie.movies.find((elem) => {
@@ -20,10 +21,14 @@ export const OnePage = () => {
   React.useEffect(() => {
     dispatch(fetchMovies());
     dispatch(fetchGenres());
-    dispatch(fetchCategories());
   }, [dispatch]);
 
-  let movieGenre = ''
+  const [fullText, setFullText] = React.useState(movie?.description?.slice(0, 500))
+
+  if (!movie) {
+    return "loading";
+  }
+
   for (let i = 0; i < genres.length; i++) {
     for (let j = 0; j < movie.genre.length; j++) {
       if (genres[i]._id === movie.genre[j])
@@ -31,21 +36,15 @@ export const OnePage = () => {
     }
   }
 
-  const [fullText, setFullText] = React.useState(movie.description.slice(0, 500))
-
   const hendleFullText = () => {
     if (switchText) {
-      setFullText(movie.description)
+      setFullText(movie.description.slice(0, 500))
       setSwitchText(false)
     }
     if (!switchText) {
-      setFullText(movie.description.slice(0, 500))
+      setFullText(movie.description)
       setSwitchText(true)
     }
-  }
-
-  if (!movie) {
-    return "loading";
   }
 
   return (
@@ -81,10 +80,10 @@ export const OnePage = () => {
         </div>
       </div>
       <div className={styles.discription}>
-        {fullText}
-        {fullText === movie.description ? <p onClick={hendleFullText} className={styles.readBtn}>Скрыть</p>
-          :
-          <p onClick={hendleFullText} className={styles.readBtn}>Читать</p>}
+        {movie.description?.length < 501 ? movie.description :
+          (fullText?.length >= 501 ? <p className={styles.readBtn}>{fullText} <p onClick={hendleFullText}>Скрыть</p></p>
+            :
+            <p className={styles.readBtn}>{fullText}...<p onClick={hendleFullText}>Читать</p></p>)}
       </div>
     </div>
   )

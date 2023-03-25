@@ -16,7 +16,9 @@ const Slider = ({ catId }) => {
         if (movie.category === catId) {
           return (
             <div className={styles.cardblock}>
-              <img className={styles.card_img} src={movie.preview} alt='' />
+              <Link className={styles.cat_title} to={`/movie/${movie._id}`}>
+                <img className={styles.card_img} src={movie.preview} alt='' />
+              </Link>
               <div className={styles.card_text}>
                 <div className={styles.card_title}>{movie.name}</div>
                 <div className={styles.card_sub}>{movie.sub}</div>

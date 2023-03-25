@@ -33,6 +33,7 @@
         color: rgba(255, 255, 255, 0.518);
         border-radius: 5px;
         transition: 200ms;
+        cursor: pointer;
         &:hover {
           color: rgba(255, 255, 255, 0.845);
         }
@@ -42,6 +43,7 @@
         padding: 10px 15px;
         color: rgba(255, 255, 255, 0.815);
         background: rgba(255, 255, 255, 0.111);
+        cursor: pointer;
         border-radius: 4px;
       }
     }
