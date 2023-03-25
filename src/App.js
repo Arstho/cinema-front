@@ -4,18 +4,17 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { OnePage } from "./pages/OnePage/OnePage";
 import { Register } from "./pages/Register/Register";
 import { Login } from "./pages/Login/Login";
-
-import { Footer } from "./components/Footer";
+// import { Footer } from "./components/Footer";
+import Header from "./components/Header/Header";
 import ListPage from "./pages/ListPage/ListPage";
 // import IconBxUser from "./IconBxUser";
 import PersonalArea from "./components/PersonalArea/PersonalArea";
 import AdminPage from "./pages/AdminPage/AdminPage";
-import Header from "./components/Header";
 
 function App() {
   return (
     <div className='App'>
-      <Header/>
+      <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/personal' element={<PersonalArea />} />
@@ -25,7 +24,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<AdminPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

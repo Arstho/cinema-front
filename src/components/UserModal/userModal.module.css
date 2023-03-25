@@ -1,0 +1,65 @@
+.userModal {
+  position: absolute;
+  width: 300px;
+  height: 330px;
+  z-index: 30;
+  top: 70px;
+  right: 50px;
+  background-color: rgba(61, 61, 61);
+  border-radius: 10px;
+}
+
+.line {
+  width: 260px;
+  margin-top: 20px;
+  border-radius: 30%;
+  border: 0.2px solid rgba(146, 146, 146, 0.48);
+}
+
+.userName {
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.userMail {
+  font-size: 15px;
+  margin-left: 20px;
+  margin-top: 5px;
+  color: rgb(135, 135, 135);
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.modalSettings div {
+  padding-left: 20px;
+  padding-top: 15px;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  height: 40px;
+}
+
+.modalSettings div:hover {
+  background-color: rgb(106, 105, 105);
+}
+
+.logout {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid rgb(61, 61, 61);
+  right: 30px;
+  z-index: 20;
+  top: -8px;
+}

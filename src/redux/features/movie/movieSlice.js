@@ -55,9 +55,10 @@ export const addMovie = createAsyncThunk(
           raiting,
         }),
       });
+      await console.log(movie.json());
       return movie.json();
     } catch (error) {
-      return error;
+      console.log(error.message);
     }
   },
 );
