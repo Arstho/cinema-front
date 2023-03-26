@@ -34,7 +34,7 @@ const PosterSlider = ({ posters }) => {
     <div className="poster-slider swiper-container">
       <div className="swiper-wrapper">
         {posters.map((poster, index) => (
-          <div key={index} className="swiper-slide">
+          <div key={index} className="swiper-slide" style={{marginBottom: '50px'}}>
             <img src={poster.imageUrl} alt={poster.title} style={{height: '600px'}}/>
           </div>
         ))}
