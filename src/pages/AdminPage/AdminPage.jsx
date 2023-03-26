@@ -108,6 +108,7 @@ const AdminPage = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 name='category'>
+                <option selected>Выберите категорию</option>
                 {categories.map((cat) => {
                   return <option value={cat._id}>{cat.name}</option>;
                 })}
@@ -120,6 +121,7 @@ const AdminPage = () => {
                 value={genre}
                 onChange={(e) => handleGenre(e.target.value)}
                 name='genre'>
+                <option disabled>Выберите жанр (можно указать несколько)</option>
                 {genres.map((genre) => {
                   return <option value={genre._id}>{genre.name}</option>;
                 })}

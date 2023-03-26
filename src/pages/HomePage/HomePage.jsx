@@ -15,20 +15,6 @@ export const HomePage = () => {
   }, [dispatch]);
   const categories = useSelector((state) => state.category.categories);
 
-  // const movie = 'Бронсон'
-
-  // async function getMovies() {
-  //   const res = await fetch(`https://api.kinopoisk.dev/v1/movie?page=1&limit=10&name=${movie}`, {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "X-API-KEY": "298HSAZ-RFC47PT-GZ1P13Z-PCF5JXG"
-  //     }
-  //   })
-  //   const data = await res.json()
-  //   console.log(data);
-  // }
-  // getMovies()
-
   return (
     <>
     <div className={styles.home_page}>
