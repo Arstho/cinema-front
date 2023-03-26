@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import SearchModal from "../SearchModal/SearchModal";
-import { useParams,} from "react-router-dom";
 import UserModal from "../UserModal/UserModal.jsx";
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo_3.png";
