@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./userModal.module.css";
+import logoutIcon from "../../assets/logout.png";
 
 const UserModal = ({ userModal, setUserModal }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const UserModal = ({ userModal, setUserModal }) => {
       <div className={styles.triangle} />
       <div className={styles.userName}>Мансур Умаров</div>
       <div className={styles.logout}>
-        <img src="./logout.png" alt="" />
+        <img src={logoutIcon} alt='' />
       </div>
       <div className={styles.userMail}>muslim_abdulov@mail.ru</div>
       <hr className={styles.line} />

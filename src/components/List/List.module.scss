@@ -11,6 +11,8 @@
     .card_img {
       margin-bottom: 10px;
       width: 230px;
+      height: 320px;
+      overflow: hidden;
       border-radius: 5px;
       transition: 300ms;
       &:hover {
