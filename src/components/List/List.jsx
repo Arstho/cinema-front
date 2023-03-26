@@ -6,47 +6,39 @@ import styles from "./List.module.scss";
 const List = ({ genre, year, country, raiting, subCat }) => {
   const { id } = useParams();
   const movies = useSelector((state) => state.movie.movies);
-  const genres = useSelector((state) => state.genre.genre);
-  const movie = useSelector((state) =>
-  state.movie.movies.find((elem) => {
-    return elem._id;
-  })
-);
+  const genres = useSelector((state) => state.genre.find(genre => genre.name === genre));
 
-  const movieGenre = genres.reduce((acc, genre) => {
-    if (movie.genre.includes(genre._id)) {
-      return `${acc} ${movie.name}`
-    }
-    return acc;
-  }, '');
+
+console.log('movieGenre', genres);
+
+  if (!movies || !genres) {
+    return <div>Loading...</div>;
+  }
 
   let filteredMovies = [...movies];
 
   const filterMovies = () => {
-    if (genre !== "Все жанры") {
-      filteredMovies = movies.filter(movie => movieGenre.split(' ').includes(movie.name));
-      console.log(filteredMovies);
-    }
+    // if (genre !== "Все жанры") {
+    //   filteredMovies = movies.filter(movie => movieGenre.split(' ').includes(movie.name));
+    // }
 
     if (year !== "Все годы") {
-      filteredMovies = filteredMovies.filter(movie => year.slice(0, 4) <= movie.release && year.slice(-4) >= movie.release);
-    }
+      filteredMovies = filteredMovies.filter(movie => +year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release);
+    } 
 
     if (country !== "Все страны") {
       filteredMovies = filteredMovies.filter(movie => movie.country.includes(country));
-    }
+    } 
 
     if (raiting !== "Любой рейтинг") {
       filteredMovies = filteredMovies.filter(movie => movie.raiting >= +(raiting.replace('Больше ', '')));
-    }
+    } 
 
     return filteredMovies;
   }
   filterMovies()
-  
-  if (!movies || !genres) {
-    return <div>Loading...</div>;
-  }
+
+ 
 
   return (
     <div className={styles.list}>
