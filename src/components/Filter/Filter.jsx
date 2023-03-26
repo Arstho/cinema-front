@@ -1,26 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styles from "./Filter.module.scss";
 
-const Filter = () => {
-  const [genre, setGenre] = React.useState('');
-  const [year, setYear] = React.useState('');
-  const [country, setCountry] = React.useState('');
-  const [raiting, setRaiting] = React.useState('');
-  const movies = useSelector((state) => state.movie.movies);
+const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, chengeRaiting, genre, year, country, raiting, subCat }) => {
 
-  const chengeGenre = (e) => {
-    setGenre(e.target.value);
-  }
-  const chengeYear = (e) => {
-    setYear(e.target.value);
-  }
-  const chengeCountry = (e) => {
-    setCountry(e.target.value);
-  }
-  const chengeRaiting = (e) => {
-    setRaiting(e.target.value);
-  }
+  const arrSubCat = ['Все', 'Бесплатные', 'По подписке']
 
   return (
     <>
@@ -30,9 +13,9 @@ const Filter = () => {
       <div className={styles.filter_cont}>
         <div className={styles.filter_wrapper}>
           <div className={styles.sub_cont}>
-            <div className={styles.sub_cat_active}>Все</div>
-            <div className={styles.sub_cat}>Бесплатные</div>
-            <div className={styles.sub_cat}>По подписке</div>
+          {arrSubCat.map((item, i) => (
+            <div onClick={() => onClickChengeSubCat(i)} className={subCat === i ? styles.sub_cat_active : styles.sub_cat}>{item}</div>
+            ))}
           </div>
           <div className={styles.filter_cont_1}>
             <select className={styles.filter_cat} value={genre} onChange={chengeGenre}>
@@ -49,10 +32,10 @@ const Filter = () => {
             </select>
             <select className={styles.filter_cat} value={year} onChange={chengeYear}>
               <option className={styles.filter_genre}>Все годы</option>
-              <option className={styles.filter_genre}>до 1999</option>
+              <option className={styles.filter_genre}>1980 - 1999</option>
               <option className={styles.filter_genre}>2000 - 2005</option>
               <option className={styles.filter_genre}>2006 - 2010</option>
-              <option className={styles.filter_genre}>2010 - 2015</option>
+              <option className={styles.filter_genre}>2011 - 2015</option>
               <option className={styles.filter_genre}>2016 - 2020</option>
               <option className={styles.filter_genre}>2021 - 2023</option>
             </select>

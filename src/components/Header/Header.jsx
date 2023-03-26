@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import SearchModal from "../SearchModal/SearchModal";
+import { useParams, Link } from "react-router-dom";
 import UserModal from "../UserModal/UserModal.jsx";
 import styles from "./Header.module.scss";
 import logo from "../../assets/logo_3.png";
@@ -12,6 +13,8 @@ const Header = () => {
   const [userModal, setUserModal] = useState(false);
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
+  const categories = useSelector((state) => state.category.categories);
+  const { id } = useParams();
 
   const modalHandler = () => {
     setUserModal(!userModal);
@@ -29,18 +32,10 @@ const Header = () => {
         <img src={logo} />
       </div>
       <div className={styles.menu}>
-        <Link to={"/category/641c16833e802ab92a09d4c7"}>
-          <div className={styles.menu_li}>ФИЛЬМЫ</div>
-        </Link>
-        <Link to='/category/641c168c3e802ab92a09d4c9'>
-          <div className={styles.menu_li}>МУЛЬТФИЛЬМЫ</div>
-        </Link>
-        <Link to='/category/641c16953e802ab92a09d4cb'>
-          <div className={styles.menu_li}>АНИМЕ</div>
-        </Link>
-        <Link to='/category/641c169b3e802ab92a09d4cd'>
-          <div className={styles.menu_li}>СЕРИАЛЫ</div>
-        </Link>
+
+      {categories.map(cat => {
+              return (<Link to={`category/${cat._id}`}><div className={styles.menu_li}>{cat.name}</div></Link>)
+          })}
       </div>
       <div className={styles.search_and_login}>
         <input
@@ -50,7 +45,8 @@ const Header = () => {
           onClick={() => setOpen(true)}
         />
         <button className={styles.sub}>30 ДНЕЙ ПОДПИСКИ БЕСПЛАТНО</button>
-        {token ? userIcon : <button className={styles.login}>войти</button>}
+          
+        {token ? userIcon : <Link to='/login'><button className={styles.login}>войти</button></Link>}
       </div>
       {userModal ? <UserModal userModal={userModal} setUserModal={setUserModal} /> : null}
     </div>

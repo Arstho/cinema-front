@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../../redux/features/movie/movieSlice";
 import styles from "./HomePage.module.scss";
 import Slider from "../../components/Slider/Slider";
 import { fetchCategories } from "../../redux/features/category/categorySlice";
-
-
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
