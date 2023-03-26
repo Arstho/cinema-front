@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SearchModal from "../SearchModal/SearchModal";
+import { useParams, Link } from "react-router-dom";
 import UserModal from "../UserModal/UserModal.jsx";
 import styles from "./Header.module.scss";
 
@@ -10,6 +11,8 @@ const Header = () => {
   const [userModal, setUserModal] = useState(false);
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
+  const categories = useSelector((state) => state.category.categories);
+  const { id } = useParams();
 
   const modalHandler = () => {
     setUserModal(!userModal);
@@ -27,10 +30,9 @@ const Header = () => {
         <img src="./logo_3.png" />
       </div>
       <div className={styles.menu}>
-        <div className={styles.menu_li}>ФИЛЬМЫ</div>
-        <div className={styles.menu_li}>МУЛЬТФИЛЬМЫ</div>
-        <div className={styles.menu_li}>АНИМЕ</div>
-        <div className={styles.menu_li}>СЕРИАЛЫ</div>
+      {categories.map(cat => {
+              return (<Link to={`category/${cat._id}`}><div className={styles.menu_li}>{cat.name}</div></Link>)
+          })}
       </div>
       <div className={styles.search_and_login}>
         <input
@@ -40,7 +42,8 @@ const Header = () => {
           onClick={() => setOpen(true)}
         />
         <button className={styles.sub}>30 ДНЕЙ ПОДПИСКИ БЕСПЛАТНО</button>
-        {token ? userIcon : <button className={styles.login}>войти</button>}
+          
+        {token ? userIcon : <Link to='/login'><button className={styles.login}>войти</button></Link>}
       </div>
       {userModal ? (
         <UserModal userModal={userModal} setUserModal={setUserModal} />

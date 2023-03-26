@@ -65,7 +65,7 @@ function SearchModal({ open, setOpen }) {
           <div
             className={styles.movieCard}
             key={movie.id}
-            onClick={() => navigate(`/movie/${movie.id}`)}
+            onClick={() => navigate(`/movie/${movie._id}`)}
           >
             <img src={movie.preview} alt={movie.name} />
             <div className={styles.movieCardInfo}>
