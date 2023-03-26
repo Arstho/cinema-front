@@ -5,6 +5,7 @@ import styles from "./HomePage.module.scss";
 import Slider from "../../components/Slider/Slider";
 import { fetchCategories } from "../../redux/features/category/categorySlice";
 import PosterSlider from "../../components/PosterSlider/PosterSlider";
+import { Link } from "react-router-dom";
 
 
 
