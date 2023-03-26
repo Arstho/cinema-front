@@ -7,24 +7,29 @@ const List = ({ genre, year, country, raiting, subCat }) => {
   const { id } = useParams();
   const movies = useSelector((state) => state.movie.movies);
   const genres = useSelector((state) => state.genre.genre);
+  const movie = useSelector((state) =>
+  state.movie.movies.find((elem) => {
+    return elem._id;
+  })
+);
 
-  console.log('genre', genres[0]?._id);
-
-  if (!movies || !genres) {
-    return <div>Loading...</div>;
-  }
+  const movieGenre = genres.reduce((acc, genre) => {
+    if (movie.genre.includes(genre._id)) {
+      return `${acc} ${movie.name}`
+    }
+    return acc;
+  }, '');
 
   let filteredMovies = [...movies];
 
   const filterMovies = () => {
     if (genre !== "Все жанры") {
-      const movieGenre = genres.find(g => g?.name === genre)
-      filteredMovies = filteredMovies.filter(movie => movie.genre === movieGenre?._id);
+      filteredMovies = movies.filter(movie => movieGenre.split(' ').includes(movie.name));
       console.log(filteredMovies);
     }
 
     if (year !== "Все годы") {
-      filteredMovies = filteredMovies.filter(movie => +year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release);
+      filteredMovies = filteredMovies.filter(movie => year.slice(0, 4) <= movie.release && year.slice(-4) >= movie.release);
     }
 
     if (country !== "Все страны") {
@@ -37,8 +42,11 @@ const List = ({ genre, year, country, raiting, subCat }) => {
 
     return filteredMovies;
   }
-
   filterMovies()
+  
+  if (!movies || !genres) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.list}>

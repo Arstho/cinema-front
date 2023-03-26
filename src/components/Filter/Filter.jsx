@@ -48,7 +48,7 @@ const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, c
               <option className={styles.filter_genre}>Германия</option>
               <option className={styles.filter_genre}>США</option>
               <option className={styles.filter_genre}>Бразилия</option>
-              <option className={styles.filter_genre}>Корея Южная</option>
+              <option className={styles.filter_genre}>Индия</option>
               <option className={styles.filter_genre}>Дания</option>
             </select>
             <select className={styles.filter_cat} value={raiting} onChange={chengeRaiting}>
