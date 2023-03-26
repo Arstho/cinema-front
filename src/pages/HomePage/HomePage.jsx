@@ -4,11 +4,10 @@ import { fetchMovies } from "../../redux/features/movie/movieSlice";
 import styles from "./HomePage.module.scss";
 import Slider from "../../components/Slider/Slider";
 import { fetchCategories } from "../../redux/features/category/categorySlice";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const HomePage = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
 
   React.useEffect(() => {
     dispatch(fetchMovies());
@@ -31,6 +30,7 @@ export const HomePage = () => {
   // getMovies()
 
   return (
+    <>
     <div className={styles.home_page}>
       <div className={styles.content_wrapper}>
         <div className={styles.category}>
@@ -47,5 +47,6 @@ export const HomePage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };

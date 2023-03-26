@@ -1,35 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import styles from "./Filter.module.scss";
 
-const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, chengeRaiting, genre, year, country,raiting, subCat }) => {
-  // const [genre, setGenre] = React.useState('');
-  // const [year, setYear] = React.useState('');
-  // const [country, setCountry] = React.useState('');
-  // const [raiting, setRaiting] = React.useState('');
-  // const [subCat, setSubCat] = React.useState(0);
+const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, chengeRaiting, genre, year, country, raiting, subCat }) => {
 
-  // const { id } = useParams();
-  // const movies = useSelector((state) => state.movie.movies);
   const arrSubCat = ['Все', 'Бесплатные', 'По подписке']
-
-  // const onClickChengeSubCat = (index) => {
-  //   setSubCat(index);
-  // };
-
-  // const chengeGenre = (e) => {
-  //   setGenre(e.target.value);
-  // }
-  // const chengeYear = (e) => {
-  //   setYear(e.target.value);
-  // }
-  // const chengeCountry = (e) => {
-  //   setCountry(e.target.value);
-  // }
-  // const chengeRaiting = (e) => {
-  //   setRaiting(e.target.value);
-  // }
 
   return (
     <>
@@ -58,7 +32,7 @@ const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, c
             </select>
             <select className={styles.filter_cat} value={year} onChange={chengeYear}>
               <option className={styles.filter_genre}>Все годы</option>
-              <option className={styles.filter_genre}>до 1999</option>
+              <option className={styles.filter_genre}>1980 - 1999</option>
               <option className={styles.filter_genre}>2000 - 2005</option>
               <option className={styles.filter_genre}>2006 - 2010</option>
               <option className={styles.filter_genre}>2011 - 2015</option>

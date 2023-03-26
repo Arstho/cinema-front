@@ -1,55 +1,55 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
   users: [],
-  token: null,
+  token: 1,
   isLoading: false,
   status: null,
-}
+};
 
 export const registerUser = createAsyncThunk(
-  'auth/registerUser',
+  "auth/registerUser",
   async ({ username, password }) => {
     try {
-      const response = await fetch('http://localhost:4000/registration', {
-        method: 'POST',
+      const response = await fetch("http://localhost:4000/registration", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
       });
       const data = await response.json();
       if (data.token) {
-        window.localStorage.setItem('token', data.token);
+        window.localStorage.setItem("token", data.token);
       }
       return data;
     } catch (error) {
       console.log(error);
     }
-  },
+  }
 );
 
 export const loginUser = createAsyncThunk(
-  'auth/loginUser',
+  "auth/loginUser",
   async ({ username, password }) => {
     try {
-      const response = await fetch('http://localhost:4000/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:4000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
       });
       const data = await response.json();
       if (data.token) {
-        window.localStorage.setItem('token', data.token);
+        window.localStorage.setItem("token", data.token);
       }
       return data;
     } catch (error) {
       console.log(error);
     }
-  },
+  }
 );
 
 export const getUsers = createAsyncThunk("get/users", async () => {
@@ -77,45 +77,45 @@ export const deleteUserByName = createAsyncThunk(
 );
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     logout: (state) => {
-      state.user = null
-      state.users = []
-      state.token = null  
-      state.isLoading = false
-      state.status = null
+      state.user = null;
+      state.users = [];
+      state.token = null;
+      state.isLoading = false;
+      state.status = null;
     },
   },
   extraReducers: {
     [registerUser.pending]: (state) => {
-      state.isLoading = true
-      state.status = null
+      state.isLoading = true;
+      state.status = null;
     },
     [registerUser.fulfilled]: (state, action) => {
-      state.isLoading = false
-      state.status = action.payload.message
-      state.user = action.payload.user
-      state.token = action.payload.token
+      state.isLoading = false;
+      state.status = action.payload.message;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
     },
     [registerUser.rejectWithValue]: (state, action) => {
-      state.status = action.payload.message
-      state.isLoading = false
+      state.status = action.payload.message;
+      state.isLoading = false;
     },
     [loginUser.pending]: (state) => {
-      state.isLoading = true
-      state.status = null
+      state.isLoading = true;
+      state.status = null;
     },
     [loginUser.fulfilled]: (state, action) => {
-      state.isLoading = false
-      state.status = action.payload.message
-      state.user = action.payload.user
-      state.token = action.payload.token
+      state.isLoading = false;
+      state.status = action.payload.message;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
     },
     [loginUser.rejectWithValue]: (state, action) => {
-      state.status = action.payload.message
-      state.isLoading = false
+      state.status = action.payload.message;
+      state.isLoading = false;
     },
     [getUsers.fulfilled]: (state, action) => {
       state.users = action.payload;
@@ -124,10 +124,10 @@ export const authSlice = createSlice({
       state.users = state.users.filter(
         (user) => user.username !== action.payload
       );
-    }
+    },
   },
-})
+});
 
-export const checkIsAuth = (state) => Boolean(state.auth.token)
-export const { logout } = authSlice.actions
-export default authSlice.reducer
+export const checkIsAuth = (state) => Boolean(state.auth.token);
+export const { logout } = authSlice.actions;
+export default authSlice.reducer;
