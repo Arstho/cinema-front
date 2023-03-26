@@ -32,9 +32,9 @@ const PosterSlider = ({ posters }) => {
 
   return (
     <div className="poster-slider swiper-container">
-      <div className="swiper-wrapper">
+      <div className="swiper-wrapper" style={{marginBottom: '50px'}}>
         {posters.map((poster, index) => (
-          <div key={index} className="swiper-slide" style={{marginBottom: '50px'}}>
+          <div key={index} className="swiper-slide">
             <img src={poster.imageUrl} alt={poster.title} style={{height: '600px'}}/>
           </div>
         ))}
