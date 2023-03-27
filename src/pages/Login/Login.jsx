@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { checkIsAuth, loginUser } from "../../redux/features/auth/authSlice";
+import { checkIsAuth, getUsers, loginUser } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 import styles from "./Login.module.scss";
 
@@ -13,6 +13,12 @@ export const Login = () => {
   const isAuth = useSelector(checkIsAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+useEffect(()=> {
+  dispatch(getUsers())
+})
+
+const user = 
 
   useEffect(() => {
     if (status) toast(status);
