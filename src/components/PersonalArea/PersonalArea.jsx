@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import IconBxUser from "../../IconBxUser";
-import styles from "./personalArea.module.css"
+import { getUsers } from "../../redux/features/auth/authSlice";
+import styles from "./personalArea.module.css";
 
 const PersonalArea = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+  const user = useSelector((state) => state.auth.user);
+  if (!user) {
+    return "...";
+  }
   return (
     <>
       <div className={styles.continer}>
@@ -13,8 +24,8 @@ const PersonalArea = () => {
           </div>
 
           <div className={styles.text}>
-            <h2>Мансур Умаров</h2>
-            <span>muslim_abdulov@mail.ru </span>
+            <h2>{user.username}</h2>
+            <span>{user.username}@mail.ru </span>
           </div>
         </div>
 
@@ -22,22 +33,22 @@ const PersonalArea = () => {
           <div className={styles.blokUl}>
             <ul className={styles.meny}>
               <li className={styles.li1}>
-                <a href="#"></a>ИЗБРАННОЕ
+                <a href='#'></a>ИЗБРАННОЕ
               </li>
               <li className={styles.li1}>
-                <a href="#"></a>ОЦЕНКИ
+                <a href='#'></a>ОЦЕНКИ
               </li>
               <li className={styles.li1}>
-                <a href="#"></a>ПОДПИСКА
+                <a href='#'></a>ПОДПИСКА
               </li>
               <li className={styles.li1}>
-                <a href="#"></a>НАСТРОЙКИ
+                <a href='#'></a>НАСТРОЙКИ
               </li>
               <li className={styles.li1}>
-                <a href="#"></a>ПРОМОКОДЫ
+                <a href='#'></a>ПРОМОКОДЫ
               </li>
               <li className={styles.li1}>
-                <a href="#"></a>SMART TV
+                <a href='#'></a>SMART TV
               </li>
             </ul>
           </div>
