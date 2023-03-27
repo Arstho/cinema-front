@@ -31,6 +31,7 @@ export const addMovie = createAsyncThunk(
       duration,
       release,
       raiting,
+      sub,
     },
     thunkAPI,
   ) => {
@@ -53,6 +54,7 @@ export const addMovie = createAsyncThunk(
           duration,
           release,
           raiting,
+          sub,
         }),
       });
       await console.log(movie.json());
