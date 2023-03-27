@@ -11,6 +11,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [userModal, setUserModal] = useState(false);
   const token = useSelector((state) => state.auth.token);
+  const sub = useSelector((state) => state.auth.sub);
   const navigate = useNavigate();
   const categories = useSelector((state) => state.category.categories);
   const { id } = useParams();
@@ -46,8 +47,14 @@ const Header = () => {
           placeholder='Найти'
           onClick={() => setOpen(true)}
         />
-        <button className={styles.sub}>30 ДНЕЙ ПОДПИСКИ БЕСПЛАТНО</button>
+        {!sub &&
+          <>
+          <Link to='/sub'>
+            <button className={styles.sub}>30 ДНЕЙ ПОДПИСКИ БЕСПЛАТНО</button>
 
+          </Link>
+          </>
+        }
         {token ? (
           userIcon
         ) : (

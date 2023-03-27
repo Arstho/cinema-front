@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import styles from "./List.module.scss";
@@ -8,42 +10,130 @@ const List = ({ genre, year, country, raiting, subCat }) => {
   const movies = useSelector((state) => state.movie.movies);
   const genres = useSelector((state) => state.genre.genre);
 
-  console.log('genre', movies[0]?.genre);
+  const ex = movies.filter(mov => mov.genre.includes(genre))
 
-  if (!movies || !genres) {
-    return <div>Loading...</div>;
-  }
-
-  let filteredMovies = [...movies];
-
-  const filterMovies = () => {
-    if (genre !== "Все жанры") {
-      const movieGenre = genres.find(g => g?.name === genre)
-      filteredMovies = filteredMovies.filter(movie => movie.genre.includes(movieGenre?._id));
-      console.log('filteredMovies', filteredMovies);
-      console.log('movieGenre', movieGenre);
+  // const [filteredMovies, setFilteredMovies] = useState([]);
+  // const movieGenre = genres.find(g => g?.name === genre)
+  const filteredMov = movies.filter((movie) => {
+    // if(genre && movie.genre !== genre) {
+    //   return false
+    // }
+    if(genre && genre !== "Все жанры" && !movie.genre.includes(genre)) {
+      console.log(movie.genre.includes(genre));
+      return false
     }
 
-    if (year !== "Все годы") {
-      filteredMovies = filteredMovies.filter(movie => +year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release);
+    if(year && year !== 'Все годы' && !(+year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release)) {
+      return false
     }
 
-    if (country !== "Все страны") {
-      filteredMovies = filteredMovies.filter(movie => movie.country.includes(country));
+    if(country && country !== 'Все страны' && movie.country.trim() !== country) {
+      return false
     }
 
-    if (raiting !== "Любой рейтинг") {
-      filteredMovies = filteredMovies.filter(movie => movie.raiting >= +(raiting.replace('Больше ', '')));
+    if(raiting && raiting !== 'Любой рейтинг' && movie.raiting <= Number(raiting)) {
+      return false
     }
 
-    return filteredMovies;
-  }
+    if(subCat && subCat !== 0 && subCat !== 2 && !(movie.sub === "Бесплатно")) {
+      return false
+    }
+    if(subCat && subCat !== 0 && subCat !== 1 && !(movie.sub === "Подписка")) {
+      return false
+    }
+    return true
+  })
+  // let prevArray = []
 
-  filterMovies()
+  // useEffect(() => {
+  //   setFilteredMovies([...movies])
+  // }, [movies])
+
+  // useEffect(() => {
+  //   if (genre !== "Все жанры") {
+  //     const movieGenre = genres.find(g => g?.name === genre)
+  //     setFilteredMovies(movies.filter(movie => movie.genre.includes(movieGenre?._id)))
+  //     console.log("filt", filteredMovies);
+  //     // prevArray = filteredMovies
+  //   }
+
+    // else if (genre === "Все жанры") {
+    //   setFilteredMovies([...movies])
+    // }
+
+    // else if (year !== "Все годы") {
+    //   setFilteredMovies(filteredMovies.filter(movie => +year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release));
+    // }
+
+    // else if (year === "Все годы") {
+    //   setFilteredMovies(filteredMovies)
+    // }
+
+    // if (country !== "Все страны") {
+    //   setFilteredMovies(filteredMovies.filter(movie => movie.country.includes(country)));
+    //   }
+
+    // if (raiting !== "Любой рейтинг") {
+    //   setFilteredMovies(filteredMovies.filter(movie => movie.raiting >= +(raiting.replace('Больше ', ''))));
+    // }
+
+    // else {
+    //   setFilteredMovies([...movies])
+    // }
+
+    // return filteredMovies;
+
+  // }, [genre, , raiting, subCat])
+
+  // useEffect(() => {
+  //   if (year !== "Все годы") {
+  //     setFilteredMovies(filteredMovies.filter(movie => +year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release));
+  //   }
+  //  }, [year])
+
+  // useEffect(() => {
+  //   if (country !== "Все страны") {
+  //     setFilteredMovies(movies.filter(movie => movie.country.includes(country)));
+  //   }
+  // }, [country])
+
+  // React.useMemo(() => {
+  //   // if (genre !== "Все жанры") {
+  //   //   const movieGenre = genres.find(g => g?.name === genre)
+  //   //   setFilteredMovies(movies.filter(movie => movie.genre.includes(movieGenre?._id)))
+  //   //   console.log("filt", filteredMovies);
+  //   // }
+
+  //   if (year !== "Все годы") {
+  //     setFilteredMovies(filteredMovies.filter(movie => +year.slice(0, 4) <= +movie.release && +year.slice(-4) >= +movie.release));
+  //   }
+
+  //   // if (country !== "Все страны") {
+  //   //   setFilteredMovies(filteredMovies.filter(movie => movie.country.includes(country)));
+  //   //   }
+
+  //   // if (raiting !== "Любой рейтинг") {
+  //   //   setFilteredMovies(filteredMovies.filter(movie => movie.raiting >= +(raiting.replace('Больше ', ''))));
+  //   // }
+
+  //   else {
+  //     setFilteredMovies([...movies])
+  //   }
+
+  //   return filteredMovies;
+  // }, [genre, year, country, raiting, subCat])
+
+  // console.log("FILTEREDMOVIE",filteredMov, country, year, raiting, genre );
+  // filterMovies()
+
+  // if (!filteredMovies) {
+  //   return <div>Loading...</div>;
+  // }
+
 
   return (
     <div className={styles.list}>
-      {filteredMovies.map((movie, i) => {
+      {filteredMov?.map((movie, i) => {
         if (
           movie.category === id
         ) {

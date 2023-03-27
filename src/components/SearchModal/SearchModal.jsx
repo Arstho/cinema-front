@@ -40,9 +40,13 @@ function SearchModal({ open, setOpen }) {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [setOpen]);
+  const handleActive = () => {
+    setOpen(false)
+  }
 
   return (
     <div
+    onClick={handleActive}
       className={
         open ? styles.searchMain + " " + styles.active : styles.searchMain
       }
@@ -52,6 +56,7 @@ function SearchModal({ open, setOpen }) {
           <b>✕</b>
         </button>
         <input
+        onClick={(e) => e.stopPropagation()}
           type="text"
           className={styles.inp}
           value={text}

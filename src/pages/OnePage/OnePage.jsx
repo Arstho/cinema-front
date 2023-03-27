@@ -108,9 +108,9 @@ export const OnePage = () => {
               Стоимость: <a href='#'>{movie.sub}</a>{" "}
             </div>
           </div>
-          <div>
+          {/* <div>
             <h3> 16+</h3>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.discription}>
