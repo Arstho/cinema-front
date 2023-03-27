@@ -28,7 +28,7 @@ const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, c
           <div className={styles.filter_cont_1}>
             <select className={styles.filter_cat} value={genre} onChange={chengeGenre}>
               <option className={styles.filter_genre}>Все жанры</option>
-              {genres.map(genre => <option className={styles.filter_genre}>{genre.name}</option>)}
+              {genres.map(genre => <option className={styles.filter_genre} value={genre._id}>{genre.name}</option>)}
             </select>
             <select className={styles.filter_cat} value={year} onChange={chengeYear}>
               <option className={styles.filter_genre}>Все годы</option>
@@ -53,11 +53,11 @@ const Filter = ({ onClickChengeSubCat, chengeGenre, chengeYear, chengeCountry, c
             </select>
             <select className={styles.filter_cat} value={raiting} onChange={chengeRaiting}>
               <option className={styles.filter_genre}>Любой рейтинг</option>
-              <option className={styles.filter_genre}>Больше 5</option>
-              <option className={styles.filter_genre}>Больше 6</option>
-              <option className={styles.filter_genre}>Больше 7</option>
-              <option className={styles.filter_genre}>Больше 8</option>
-              <option className={styles.filter_genre}>Больше 9</option>
+              <option className={styles.filter_genre} value={5}>Больше 5</option>
+              <option className={styles.filter_genre} value={6}>Больше 6</option>
+              <option className={styles.filter_genre} value={7}>Больше 7</option>
+              <option className={styles.filter_genre} value={8}>Больше 8</option>
+              <option className={styles.filter_genre} value={9}>Больше 9</option>
             </select>
           </div>
         </div>
