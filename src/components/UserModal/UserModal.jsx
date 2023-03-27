@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./userModal.module.css";
 import logoutIcon from "../../assets/logout.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../redux/features/auth/authSlice";
+import { authExit, getUsers } from "../../redux/features/auth/authSlice";
 
 const UserModal = ({ userModal, setUserModal }) => {
   const dispatch = useDispatch();
@@ -17,15 +17,20 @@ const UserModal = ({ userModal, setUserModal }) => {
     navigate(path);
     setUserModal(false);
   };
-  if(!user){
-    return '...'
+
+  const handleExit = () => {
+    dispatch(authExit());
+    setUserModal(false);
+  };
+  if (!user) {
+    return "...";
   }
   return (
     <div className={styles.userModal}>
       <div className={styles.triangle} />
       <div className={styles.userName}>{user.username}</div>
       <div className={styles.logout}>
-        <img src={logoutIcon} alt='' />
+        <img onClick={handleExit} src={logoutIcon} alt='' />
       </div>
       <div className={styles.userMail}>{user.username}@gmail.com</div>
       <hr className={styles.line} />
