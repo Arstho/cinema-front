@@ -31,16 +31,16 @@ const PosterSlider = ({ posters }) => {
   }, []);
 
   return (
-    <div className="poster-slider swiper-container">
+    <div className="poster-slider swiper-container" style={{overflow: 'hidden'}}>
       <div className="swiper-wrapper" style={{marginBottom: '50px'}}>
         {posters.map((poster, index) => (
           <div key={index} className="swiper-slide">
-            <img src={poster.imageUrl} alt={poster.title} style={{height: '600px'}}/>
+            <img src={poster.imageUrl} alt={poster.title} style={{height: '500px'}}/>
           </div>
         ))}
       </div>
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev" style={{color: "white"}}></div>
+      <div className="swiper-button-next" style={{color: "white"}}></div>
     </div>
   );
 };

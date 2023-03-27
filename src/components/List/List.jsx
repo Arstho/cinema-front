@@ -8,13 +8,9 @@ const List = ({ genre, year, country, raiting, subCat }) => {
   const movies = useSelector((state) => state.movie.movies);
   const genres = useSelector((state) => state.genre.genre);
 
-  if (!movies || !genres) {
-    return <div>Loading...</div>;
-  }
-
   let filteredMovies = [...movies];
 
-  const filterMovies = () => {
+  React.useMemo(() => {
     if (genre !== "Все жанры") {
       const movieGenre = genres.find(g => g?.name === genre)
       filteredMovies = filteredMovies.filter(movie => movie.genre.includes(movieGenre?._id));
@@ -33,13 +29,17 @@ const List = ({ genre, year, country, raiting, subCat }) => {
     }
 
     return filteredMovies;
-  }
+  }, [genre, year, country, raiting, subCat])
 
-  filterMovies()
+  // filterMovies()
+
+  if (!filteredMovies) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.list}>
-      {filteredMovies.map((movie, i) => {
+      {filteredMovies?.map((movie, i) => {
         if (
           movie.category === id
         ) {
