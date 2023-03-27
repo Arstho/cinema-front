@@ -12,3 +12,50 @@
   flex-direction: column;
   text-align: center;
 }
+.btn {
+  border: none;
+  border-radius: 5px;
+  background: rgb(23, 190, 12);
+  color: white;
+  width: 200px;
+  height: 50px;
+  font-size: 15;
+  font-weight: 600;
+  transition: 200ms;
+  margin-top: 30px;
+  &:hover {
+    transform: scale(1.01);
+    background: rgb(19, 203, 25);
+  }
+}
+.btn_2 {
+  border: none;
+  border-radius: 5px;
+  background: rgb(207, 41, 38);
+  color: white;
+  width: 200px;
+  height: 50px;
+  font-size: 15;
+  font-weight: 600;
+  transition: 200ms;
+  margin-top: 30px;
+  &:hover {
+    transform: scale(1.01);
+    background: rgb(239, 85, 68);
+  }
+}
+.info {
+  margin-bottom: 20px;
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+input {
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  background: rgb(78, 76, 76);
+  &::placeholder {
+    color: white;
+  }
+}

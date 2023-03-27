@@ -31,10 +31,13 @@ const Header = () => {
         <img src={logo} />
       </div>
       <div className={styles.menu}>
-
-      {categories.map(cat => {
-              return (<Link to={`category/${cat._id}`}><div className={styles.menu_li}>{cat.name}</div></Link>)
-          })}
+        {categories.map((cat) => {
+          return (
+            <Link to={`category/${cat._id}`}>
+              <div className={styles.menu_li}>{cat.name}</div>
+            </Link>
+          );
+        })}
       </div>
       <div className={styles.search_and_login}>
         <input
@@ -44,8 +47,14 @@ const Header = () => {
           onClick={() => setOpen(true)}
         />
         <button className={styles.sub}>30 ДНЕЙ ПОДПИСКИ БЕСПЛАТНО</button>
-          
-        {token ? userIcon : <Link to='/login'><button className={styles.login}>войти</button></Link>}
+
+        {token ? (
+          userIcon
+        ) : (
+          <Link to='/login'>
+            <button className={styles.login}>войти</button>
+          </Link>
+        )}
       </div>
       {userModal ? <UserModal userModal={userModal} setUserModal={setUserModal} /> : null}
     </div>

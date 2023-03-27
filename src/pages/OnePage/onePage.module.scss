@@ -10,6 +10,7 @@
   padding: 3%;
   position: relative;
   background: #1a1919;
+  align-items: center;
   .posterAndInfo {
     display: flex;
     margin: 3em;
@@ -61,7 +62,14 @@
   }
 }
 .video {
-  width: 35%;
-  height: 300px;
+  width: 80%;
+  height: 500px;
   margin: 0 auto;
+}
+.sub_buy {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 40px;
+  background: #000;
 }
