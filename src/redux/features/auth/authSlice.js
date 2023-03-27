@@ -173,6 +173,7 @@ export const authSlice = createSlice({
       state.status = null;
     },
     [loginUser.fulfilled]: (state, action) => {
+      state.sub = action.payload.subToken;
       state.token = action.payload.token;
       state.user = parseJwt(state.token);
       state.isLoading = false;
